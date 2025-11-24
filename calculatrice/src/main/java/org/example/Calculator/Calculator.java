@@ -11,7 +11,7 @@ public class Calculator {
         this.calcule = calcule;
     }
 
-    public static Calculator getCalculator(Calcule calcule) {
+    public static Calculator getInstance(Calcule calcule) {
         if (instance == null) {
             instance = new Calculator(calcule);
         }

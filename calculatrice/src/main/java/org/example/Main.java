@@ -23,17 +23,20 @@ public class Main {
         Calculator calculator;
         switch (operator) {
             case "+":
-                calculator = Calculator.getCalculator(new Addition());
+                calculator = Calculator.getInstance(new Addition());
                 break;
             case "-":
-                calculator = Calculator.getCalculator(new Soustration());
+                calculator = Calculator.getInstance(new Soustration());
                 break;
             case "*":
-                calculator = Calculator.getCalculator(new Multiplication());
+                calculator = Calculator.getInstance(new Multiplication());
                 break;
             case "/":
-                calculator = Calculator.getCalculator(new Division());
+                calculator = Calculator.getInstance(new Division());
                 break;
+            default:
+                System.out.println("les Operateur valide (+, -, *, /)");
+                return;
         }
 
         List<Integer> numbers = new ArrayList<>();
