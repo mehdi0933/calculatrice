@@ -15,50 +15,42 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        List<Object> expression = new ArrayList<>();
 
-        System.out.print("Operateur (+, -, *, /) : ");
-        String operator = scanner.next();
-
-
-        Calculator calculator;
-        switch (operator) {
-            case "+":
-                calculator = Calculator.getInstance(new Addition());
-                break;
-            case "-":
-                calculator = Calculator.getInstance(new Soustration());
-                break;
-            case "*":
-                calculator = Calculator.getInstance(new Multiplication());
-                break;
-            case "/":
-                calculator = Calculator.getInstance(new Division());
-                break;
-            default:
-                System.out.println("les Operateur valide (+, -, *, /)");
-                return;
-        }
-
-        List<Integer> numbers = new ArrayList<>();
-
-        System.out.println("Entrez des nombres et tapez '=' pour terminer :");
+        System.out.println("laisser un espace entre chaque caractere  et tapez '=' pour terminer :");
 
         while (true) {
             String input = scanner.next();
+            if (input.equals("=")) break;
 
-            if (input.equalsIgnoreCase("=")) {
-                break;
+            if (input.matches("\\d+")) {
+                expression.add(Integer.parseInt(input));
+            } else if (input.matches("[+\\-*/]")) {
+                expression.add(input);
+            } else {
+                System.out.println("Entrée invalide : " + input);
+            }
+        }
+
+        int result = (Integer) expression.get(0);
+
+        Calculator calculator = null;
+
+        for (int i = 1; i < expression.size(); i += 2) {
+            String operator = (String) expression.get(i);
+            int nextNumber = (Integer) expression.get(i + 1);
+
+            switch (operator) {
+                case "+": calculator = Calculator.getInstance(new Addition()); break;
+                case "-": calculator = Calculator.getInstance(new Soustration()); break;
+                case "*": calculator = Calculator.getInstance(new Multiplication()); break;
+                case "/": calculator = Calculator.getInstance(new Division()); break;
             }
 
-            int addNomber = Integer.parseInt(input);
-            numbers.add(addNomber);
+            result = calculator.calculatorOperation(result, nextNumber);
         }
 
-        int[] nmbCaculeArrey = new int[numbers.size()];
-        for (int i = 0; i < numbers.size(); i++) {
-            nmbCaculeArrey[i] = numbers.get(i);
-        }
-        int result = calculator.calculatorOperation(nmbCaculeArrey);
         System.out.println("Résultat : " + result);
+
     }
 }
