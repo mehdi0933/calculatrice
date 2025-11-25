@@ -18,9 +18,9 @@ public class test {
                 break;
             }
 
-            if (input.matches("\\d+")) {  // nombres entiers
+            if (input.matches("\\d+")) {
                 numbers.add(Integer.parseInt(input));
-            } else if (input.matches("[+\\-*/]")) {  // opérateurs
+            } else if (input.matches("[+\\-*/]")) { 
                 numbers.add(input);
             } else {
                 System.out.println("Entrée invalide : " + input);
