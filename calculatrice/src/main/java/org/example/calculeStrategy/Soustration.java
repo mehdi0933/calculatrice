@@ -5,7 +5,7 @@ import org.example.calculeInterface.Calcule;
 public class Soustration implements Calcule {
     @Override
     public int calcule(int... arg) {
-        int différence  = 0;
+        int différence  = arg[0];;
         for(int soustration = 0; soustration < arg.length; soustration++){
             différence-=arg[soustration];
         }
