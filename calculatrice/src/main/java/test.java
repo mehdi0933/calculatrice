@@ -9,7 +9,7 @@ public class test {
         Scanner scanner = new Scanner(System.in);
         List<Object> numbers = new ArrayList<>();
 
-        System.out.println("Entrez une expression (nombre opérateur nombre ...) et tapez '=' pour terminer :");
+        System.out.println("calucle tapez '=' pour terminer :");
 
         while (true) {
             String input = scanner.next();
@@ -18,7 +18,6 @@ public class test {
                 break;
             }
 
-            // Vérifie si c'est un nombre ou un opérateur
             if (input.matches("\\d+")) {  // nombres entiers
                 numbers.add(Integer.parseInt(input));
             } else if (input.matches("[+\\-*/]")) {  // opérateurs
@@ -31,9 +30,9 @@ public class test {
             Object token = numbers.get(i);
 
             if (token instanceof String) {
-                String op = (String) token;
+                String operator = (String) token;
 
-                switch (op) {
+                switch (operator) {
                     case "+": System.out.println("Addition"); break;
                     case "-": System.out.println("Soustraction"); break;
                     case "*": System.out.println("Multiplication"); break;
