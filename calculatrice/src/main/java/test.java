@@ -20,7 +20,7 @@ public class test {
 
             if (input.matches("\\d+")) {
                 numbers.add(Integer.parseInt(input));
-            } else if (input.matches("[+\\-*/]")) { 
+            } else if (input.matches("[+\\-*/]")) {
                 numbers.add(input);
             } else {
                 System.out.println("Entrée invalide : " + input);

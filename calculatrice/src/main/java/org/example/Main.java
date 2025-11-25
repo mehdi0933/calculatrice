@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        List<Object> expression = new ArrayList<>();
+        List<Object> number = new ArrayList<>();
 
         System.out.println("laisser un espace entre chaque caractere  et tapez '=' pour terminer :");
 
@@ -24,21 +24,21 @@ public class Main {
             if (input.equals("=")) break;
 
             if (input.matches("\\d+")) {
-                expression.add(Integer.parseInt(input));
+                number.add(Integer.parseInt(input));
             } else if (input.matches("[+\\-*/]")) {
-                expression.add(input);
+                number.add(input);
             } else {
                 System.out.println("Entrée invalide : " + input);
             }
         }
 
-        int result = (Integer) expression.get(0);
+        int result = (Integer) number.get(0);
 
         Calculator calculator = null;
 
-        for (int i = 1; i < expression.size(); i += 2) {
-            String operator = (String) expression.get(i);
-            int nextNumber = (Integer) expression.get(i + 1);
+        for (int i = 1; i < number.size(); i += 2) {
+            String operator = (String) number.get(i);
+            int nextNumber = (Integer) number.get(i + 1);
 
             switch (operator) {
                 case "+": calculator = Calculator.getInstance(new Addition()); break;
