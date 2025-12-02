@@ -7,6 +7,7 @@ public class Calculator {
 
     private static Calculator instance;
     private Calcule calcule;
+
     private Calculator(Calcule calcule) {
         this.calcule = calcule;
     }
@@ -21,10 +22,12 @@ public class Calculator {
     }
 
     public void setStrategy(Calcule calcule) {
+
         this.calcule = calcule;
     }
 
     public int calculatorOperation(int... args) {
+
         return calcule.calcule(args);
     }
 }
